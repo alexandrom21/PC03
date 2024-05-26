@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Registrar Usuario";
+}
+
+<div class="container my-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <form asp-action="Create" method="post">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="job" class="form-label">Trabajo:</label>
+            <input type="text" class="form-control" id="job" name="job" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Registrar Usuario</button>
+    </form>
+</div>
