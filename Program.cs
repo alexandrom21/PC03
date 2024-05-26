@@ -15,6 +15,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddScoped<ReqresListaApiIntegration, ReqresListaApiIntegration>();
 builder.Services.AddScoped<ReqresRegistroApiIntegration, ReqresRegistroApiIntegration>();
 
 var app = builder.Build();

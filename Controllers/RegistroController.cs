@@ -14,13 +14,22 @@ namespace practica03.Controllers
     {
         private readonly ILogger<RegistroController> _logger;
         private readonly ReqresRegistroApiIntegration _reqresRegistroApiIntegration;
-
+        private readonly ReqresListaApiIntegration _reqresListaApiIntegration;
 
         public RegistroController(ILogger<RegistroController> logger,
-            ReqresRegistroApiIntegration reqresRegistroApiIntegration)
+            ReqresRegistroApiIntegration reqresRegistroApiIntegration,
+            ReqresListaApiIntegration reqresListaApiIntegration)
         {
             _logger = logger;
             _reqresRegistroApiIntegration = reqresRegistroApiIntegration ;
+            _reqresListaApiIntegration = reqresListaApiIntegration ;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Index()
+        {
+            List<Registro> users = await _reqresListaApiIntegration.GetAllUser();
+            return View(users);
         }
 
         [HttpPost]

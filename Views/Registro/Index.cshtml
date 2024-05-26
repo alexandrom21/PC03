@@ -1,19 +1,37 @@
+@model List<practica03.Integration.dto.Registro>
+
 @{
-    ViewData["Title"] = "Registrar Usuario";
+    ViewData["Title"] = "Registro";
 }
 
 <div class="container my-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+    <h2 class="mb-4 text-center">@ViewData["Title"]</h2>
 
-    <form asp-action="Create" method="post">
-        <div class="mb-3">
-            <label for="name" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-        </div>
-        <div class="mb-3">
-            <label for="job" class="form-label">Trabajo:</label>
-            <input type="text" class="form-control" id="job" name="job" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Registrar Usuario</button>
-    </form>
+    <div class="text-end mb-3">
+        <a href="@Url.Action("Create", "Registro")" class="btn btn-primary">Registrar usuario</a>
+    </div>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Trabajo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Count > 0)
+            {
+                foreach (var user in Model)
+                {
+                    <tr>
+                        <td>@user.Id</td>
+                        <td>@user.Name</td>
+                        <td>@user.Job</td>
+                        <td><a href="@Url.Action("Detalle", new { Id = user.Id })" class="btn btn-outline-secondary btn-sm">Detalle</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
 </div>
